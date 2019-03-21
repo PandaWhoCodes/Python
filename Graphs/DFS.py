@@ -1,9 +1,15 @@
-def dfs(graph, node, visited):
-    if node not in visited:
-        visited.append(node)
-        for n in graph[node]:
-            dfs(graph, n, visited)
-    return visited
+def dfs(graph, start):
+    stack, path = [start], []
+
+    while stack:
+        vertex = stack.pop()
+        if vertex in path:
+            continue
+        path.append(vertex)
+        for neighbor in graph[vertex]:
+            stack.append(neighbor)
+
+    return path
 
 
 G = {'A': ['B', 'C'],
@@ -13,4 +19,4 @@ G = {'A': ['B', 'C'],
      'E': ['B', 'F'],
      'F': ['C', 'E']}
 
-print(dfs(G, 'A',[]))
+print(dfs(G, 'A'))
