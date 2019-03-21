@@ -18,13 +18,13 @@ import collections
 
 
 def bfs(graph, start):
-    explored, queue = set(), [start]  # collections.deque([start])
-    explored.add(start)
+    explored, queue = list(), [start]  # collections.deque([start])
+    explored.append(start)
     while queue:
         v = queue.pop(0)  # queue.popleft()
         for w in graph[v]:
             if w not in explored:
-                explored.add(w)
+                explored.append(w)
                 queue.append(w)
     return explored
 
